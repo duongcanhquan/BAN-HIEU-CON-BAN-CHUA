@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bài Đánh Giá Định Hướng Học Tập Cho Con</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to right, #f8fbff, #eef4ff);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .logo img {
+      width: 170px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 18px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 6px;
+      font-size: 15px;
+    }
+
+    .question {
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 15px;
+      background: #f5f8ff;
+      border-left: 6px solid #2b6cff;
+    }
+
+    .question p {
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .answers label {
+      font-weight: normal;
+      display: block;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 35px;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      background: #2b6cff;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1b4fc9;
+    }
+
+    .success {
+      display: none;
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: bold;
+      background: #e8fff0;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <div class="card">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/duongcanhquan/image/main/Logo%20Cao%20%C4%91a%CC%86%CC%89ng%20Vie%CC%A3%CC%82t%20My%CC%83%20-%20ba%CC%89n%20chua%CC%82%CC%89n%202025-01.png">
+    </div>
+
+    <h1>BÀI ĐÁNH GIÁ CHUYÊN SÂU</h1>
+
+    <p class="subtitle">
+      Bài khảo sát này giúp cha mẹ nhìn rõ:<br>
+      ✅ Con đang ở đâu trong hành trình học tập<br>
+      ✅ Gia đình đang lo điều gì sâu kín<br>
+      ✅ Và đâu là hướng đi đúng để con không lạc đường.<br><br>
+      <b>Chỉ mất 5 phút – nhưng có thể thay đổi cả tương lai của con.</b>
+    </p>
+
+    <form id="surveyForm">
+
+      <!-- Loại bài test -->
+      <label>Loại bài Test</label>
+      <input type="text" name="testType" value="ĐÁNH GIÁ ĐỊNH HƯỚNG HỌC TẬP" required>
+
+      <!-- Thông tin con -->
+      <label>Tên của con</label>
+      <input type="text" name="childName" required>
+
+      <label>Giới tính của con</label>
+      <select name="childGender" required>
+        <option value="">-- Chọn --</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+
+      <label>Năm sinh của con</label>
+      <input type="number" name="childYear" required>
+
+      <!-- Thông tin phụ huynh -->
+      <label>Tên bố/mẹ</label>
+      <input type="text" name="parentName" required>
+
+      <label>Email (để nhận báo cáo chuyên sâu)</label>
+      <input type="email" name="parentEmail" required>
+
+      <label>Số điện thoại bố/mẹ</label>
+      <input type="text" name="parentPhone" required>
+
+      <!-- Câu hỏi -->
+      <div id="questions"></div>
+
+      <!-- Câu 25 -->
+      <label>Câu 25. Nếu được, anh/chị hãy chia sẻ điều trăn trở nhất về con?</label>
+      <textarea name="extra" rows="4"></textarea>
+
+      <button type="submit">GỬI KHẢO SÁT & NHẬN BÁO CÁO</button>
+
+      <div class="success" id="successMsg">
+        ✅ Cảm ơn anh/chị! Báo cáo chuyên sâu sẽ được gửi sớm nhất.
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // ✅ DÁN LINK WEB APP SCRIPT CỦA BẠN VÀO ĐÂY
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxpzGPvgta8RnAudhh-B-hchgGNTvG1x33zuVPozCxFGB6Vxi4HUer__cfhEbgG6KiJ/exec";
+
+  // ✅ FULL 24 câu hỏi chuẩn báo cáo đồng cảm
+  const questionsData = [
+    "1. Khi nhìn vào việc học hiện tại của con, cảm giác chung của bạn là gì?",
+    "2. Điều khiến bạn trăn trở nhất trong việc học của con hiện nay là gì?",
+    "3. Con bạn học tập với trạng thái nào?",
+    "4. Nếu chấm mức độ ổn định học tập của con, bạn chọn:",
+    "5. Khi bạn nhắc đến chuyện học, con thường phản ứng ra sao?",
+    "6. Bạn cảm nhận mối quan hệ giữa bạn và con hiện tại thế nào?",
+    "7. Con có từng thể hiện áp lực khi ở gần cha mẹ không?",
+    "8. Bạn có từng bất lực vì không thể nói chuyện học nhẹ nhàng với con?",
+    "9. Sâu bên trong, điều bạn lo nhất không phải điểm số mà là gì?",
+    "10. Bạn có hoang mang rằng mình đang làm đúng hay sai khi đồng hành cùng con?",
+    "11. Điều khiến bạn sợ nhất trong tương lai của con là:",
+    "12. Chuyện học của con có ảnh hưởng đến cảm xúc của bạn không?",
+    "13. Điều bạn mong nhất cho con là:",
+    "14. Bạn muốn con trưởng thành thành người như thế nào?",
+    "15. Trong suy nghĩ của bạn, thành công của con là:",
+    "16. Gia đình bạn đã có kế hoạch học tập rõ ràng cho con chưa?",
+    "17. Điều khiến bạn khó quyết định nhất là:",
+    "18. Bạn cảm giác con đang:",
+    "19. Con bạn thuộc kiểu tính cách nào?",
+    "20. Khi gặp khó khăn, con thường:",
+    "21. Bạn là phụ huynh thường:",
+    "22. Gia đình đang mắc kẹt nhất ở điều gì?",
+    "23. Bạn có mong muốn một lộ trình rõ ràng giúp con ổn định lại không?",
+    "24. Tổng thể, hành trình học tập của con hiện tại ở mức:"
+  ];
+
+  const answers = [
+    "A. Rất ổn định",
+    "B. Khá ổn nhưng thiếu định hướng",
+    "C. Mơ hồ và bấp bênh",
+    "D. Đang khủng hoảng thực sự"
+  ];
+
+  const questionBox = document.getElementById("questions");
+
+  questionsData.forEach((q, index) => {
+    let html = `
+      <div class="question">
+        <p>${q}</p>
+        <div class="answers">
+    `;
+    answers.forEach((a) => {
+      html += `
+        <label>
+          <input type="radio" name="q${index}" value="${a}" required>
+          ${a}
+        </label>
+      `;
+    });
+    html += `</div></div>`;
+    questionBox.innerHTML += html;
+  });
+
+  // ✅ Submit
+  document.getElementById("surveyForm").addEventListener("submit", e => {
+    e.preventDefault();
+    let formData = new FormData(e.target);
+
+    let payload = {
+      testType: formData.get("testType"),
+      childName: formData.get("childName"),
+      childGender: formData.get("childGender"),
+      childYear: formData.get("childYear"),
+      parentName: formData.get("parentName"),
+      parentEmail: formData.get("parentEmail"),
+      parentPhone: formData.get("parentPhone"),
+      answers: [],
+      extra: formData.get("extra")
+    };
+
+    questionsData.forEach((q, i) => {
+      payload.answers.push(formData.get("q"+i));
+    });
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(() => {
+      document.getElementById("successMsg").style.display = "block";
+      e.target.reset();
+    })
+    .catch(err => alert("Lỗi gửi dữ liệu: " + err));
+  });
+</script>
+
+</body>
+</html>
