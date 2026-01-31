@@ -229,63 +229,229 @@
 </div>
 
 <script>
-/* ✅ LINK WEB APP GOOGLE SCRIPT */
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbxpzGPvgta8RnAudhh-B-hchgGNTvG1x33zuVPozCxFGB6Vxi4HUer__cfhEbgG6KiJ/exec";
 
-/* ✅ FULL 24 CÂU */
-const questions = [
- "1. Khi nhìn vào việc học hiện tại của con, cảm giác chung của bạn là:",
- "2. Điều khiến bạn trăn trở nhất trong việc học của con hiện nay là:",
- "3. Con bạn hiện đang học tập với trạng thái:",
- "4. Nếu chấm mức độ ổn định học tập của con:",
- "5. Khi bạn nhắc đến chuyện học, con thường:",
- "6. Bạn cảm nhận mối quan hệ giữa bạn và con hiện tại:",
- "7. Con có từng thể hiện áp lực khi ở gần cha mẹ không?",
- "8. Bạn có từng bất lực khi nói chuyện học với con?",
- "9. Điều bạn lo nhất không phải điểm số, mà là:",
- "10. Bạn có từng hoang mang mình đang làm đúng hay sai không?",
- "11. Điều khiến bạn sợ nhất trong tương lai của con là:",
- "12. Chuyện học của con có ảnh hưởng đến cảm xúc của bạn không?",
- "13. Điều bạn mong nhất cho con là:",
- "14. Bạn muốn con trưởng thành thành người như thế nào?",
- "15. Thành công của con trong suy nghĩ bạn là:",
- "16. Gia đình đã có kế hoạch học tập rõ ràng cho con chưa?",
- "17. Điều khiến bạn khó quyết định nhất là:",
- "18. Bạn cảm giác con đang:",
- "19. Con bạn thuộc kiểu tính cách nào?",
- "20. Khi gặp khó khăn, con thường:",
- "21. Bạn là phụ huynh thường:",
- "22. Gia đình đang mắc kẹt nhất ở điều gì?",
- "23. Bạn có mong muốn một lộ trình rõ ràng giúp con ổn định lại không?",
- "24. Tổng thể, hành trình học tập của con hiện tại:"
+/** ✅ Bộ câu hỏi/đáp án theo từng câu */
+const QA = [
+  { q: "1. Khi nhìn vào việc học hiện tại của con, cảm giác chung của anh/chị là gì?",
+    opts: [
+      "Con khá ổn, tự giác phần lớn thời gian",
+      "Con học được nhưng “học cho xong”, thiếu mục tiêu",
+      "Con chững lại, hay trì hoãn, khó duy trì nhịp học",
+      "Con xuống rõ rệt, mất động lực, học đối phó",
+      "Con bị áp lực/lo âu, học trong căng thẳng"
+    ]},
+  { q: "2. Trăn trở lớn nhất của anh/chị trong việc học của con hiện nay là:",
+    opts: [
+      "Con thiếu mục tiêu rõ ràng, không biết học để làm gì",
+      "Con chưa có phương pháp học phù hợp",
+      "Con dễ phân tán, khó tập trung, hay trì hoãn",
+      "Con tự ti, sợ sai, sợ bị so sánh",
+      "Con “có năng lực” nhưng không chịu cố gắng"
+    ]},
+  { q: "3. Khi bắt đầu học, con thường:",
+    opts: [
+      "Tự ngồi vào bàn, làm theo kế hoạch",
+      "Cần nhắc nhẹ mới vào guồng",
+      "Kéo dài thời gian, làm chậm, hay lạc sang việc khác",
+      "Né tránh/than mệt/đợi sát hạn mới làm",
+      "Bắt đầu được nhưng nhanh nản, bỏ giữa chừng"
+    ]},
+  { q: "4. Về kết quả học tập gần đây:",
+    opts: [
+      "Ổn định và có xu hướng tăng",
+      "Tạm ổn nhưng “lên xuống” theo môn",
+      "Giảm nhẹ và kéo dài vài tháng",
+      "Giảm rõ rệt, gia đình lo nhiều",
+      "Điểm không phản ánh đúng vì con căng thẳng/khủng hoảng"
+    ]},
+  { q: "5. Khi anh/chị nhắc đến chuyện học, con thường:",
+    opts: [
+      "Lắng nghe, trao đổi được",
+      "Nghe nhưng ít nói, né chia sẻ",
+      "Im lặng/đổi chủ đề/đi chỗ khác",
+      "Cáu gắt, phản kháng, tranh luận gay gắt",
+      "Hợp tác lúc đầu nhưng sau đó bùng nổ/khóc/đóng cửa"
+    ]},
+  { q: "6. Mối quan hệ cha mẹ–con hiện tại giống nhất với:",
+    opts: [
+      "Gần gũi, con chủ động chia sẻ",
+      "Bình thường, vẫn nói chuyện nhưng chưa sâu",
+      "Có khoảng cách, con ít chia sẻ chuyện quan trọng",
+      "Căng thẳng, dễ “đụng là nổ” khi nói chuyện học",
+      "Con tránh mặt/thu mình, gia đình lo ngại"
+    ]},
+  { q: "7. Con có dấu hiệu áp lực khi ở gần cha mẹ không?",
+    opts: [
+      "Không, con khá thoải mái",
+      "Thỉnh thoảng có, nhất là khi nhắc chuyện học",
+      "Có, con dễ căng/nhạy cảm/khó chịu",
+      "Rõ rệt: con né tránh, sợ bị hỏi, dễ cáu",
+      "Có dấu hiệu lo âu/buồn bã/kín đáo kéo dài"
+    ]},
+  { q: "8. Khi nói chuyện học với con, điều hay xảy ra nhất là:",
+    opts: [
+      "Hai bên thống nhất được việc cần làm",
+      "Anh/chị nói nhiều hơn, con nghe nhưng ít thực hiện",
+      "Nói một lúc thì “đi vào bế tắc”, không ra giải pháp",
+      "Kết thúc bằng mệt mỏi/căng thẳng/giận dỗi",
+      "Anh/chị thường phải “bùng nổ” mới khiến con làm"
+    ]},
+  { q: "9. Điều anh/chị lo nhất (không chỉ điểm số) là:",
+    opts: [
+      "Con mất tự tin, tự đánh giá thấp bản thân",
+      "Con thiếu kỹ năng tự lập, không biết tự tổ chức",
+      "Con không thấy ý nghĩa học, dễ buông xuôi",
+      "Con bị ảnh hưởng bởi bạn bè/điện thoại/mạng xã hội",
+      "Con có dấu hiệu căng thẳng/lo âu/kiệt sức"
+    ]},
+  { q: "10. Anh/chị có từng tự hỏi “mình đang đồng hành đúng cách chưa?”",
+    opts: [
+      "Hiếm khi, tôi khá chắc mình phù hợp",
+      "Thỉnh thoảng, nhưng vẫn kiểm soát được",
+      "Nhiều lần, vì cách nào cũng thấy không hiệu quả",
+      "Rất thường xuyên, tôi sợ mình gây áp lực cho con",
+      "Tôi không biết bắt đầu từ đâu, cần người hướng dẫn"
+    ]},
+  { q: "11. Điều khiến anh/chị sợ nhất trong tương lai của con:",
+    opts: [
+      "Con chọn sai hướng và phí nhiều năm",
+      "Con không có động lực, không chịu cố gắng",
+      "Con thiếu bản lĩnh, dễ gục khi gặp khó",
+      "Con không có nghề/không tự nuôi sống được",
+      "Con bị tổn thương tâm lý kéo dài mà gia đình không biết"
+    ]},
+  { q: "12. Cảm xúc của anh/chị bị ảnh hưởng bởi chuyện học của con ở mức:",
+    opts: [
+      "Ít, tôi giữ được cân bằng",
+      "Có, nhưng vẫn kiểm soát được",
+      "Khá nhiều, tôi thường lo/khó ngủ",
+      "Rất nhiều, tôi căng thẳng thường xuyên",
+      "Tôi cảm thấy kiệt sức/bất lực và cần hỗ trợ"
+    ]},
+  { q: "13. Điều anh/chị mong nhất cho con:",
+    opts: [
+      "Hạnh phúc và tự tin vào chính mình",
+      "Có kỷ luật và tự lập",
+      "Học đúng năng lực, phát huy điểm mạnh",
+      "Có định hướng rõ ràng để không lạc đường",
+      "Vừa hạnh phúc vừa có nền tảng nghề nghiệp vững"
+    ]},
+  { q: "14. Anh/chị muốn con trưởng thành thành người:",
+    opts: [
+      "Tử tế, biết quan tâm, sống có trách nhiệm",
+      "Bản lĩnh, tự quyết, dám lựa chọn",
+      "Có năng lực chuyên môn giỏi, làm được việc",
+      "Biết quản trị cảm xúc, không gục khi áp lực",
+      "Có mục tiêu, biết lập kế hoạch và theo đến cùng"
+    ]},
+  { q: "15. “Thành công” theo anh/chị là:",
+    opts: [
+      "Con hiểu mình, sống đúng giá trị",
+      "Con có nghề ổn định, thu nhập tốt",
+      "Con tự lập, không phụ thuộc gia đình",
+      "Con phát triển năng lực và được công nhận",
+      "Con cân bằng: sức khoẻ tinh thần + nghề nghiệp + gia đình"
+    ]},
+  { q: "16. Hiện gia đình đã có kế hoạch/định hướng học tập rõ ràng cho con chưa?",
+    opts: [
+      "Rồi, khá rõ mục tiêu và lộ trình",
+      "Có định hướng, nhưng chưa thành kế hoạch cụ thể",
+      "Chưa rõ, còn thay đổi liên tục",
+      "Mơ hồ, gia đình đang “loay hoay”",
+      "Có mâu thuẫn: cha mẹ muốn một kiểu, con muốn kiểu khác"
+    ]},
+  { q: "17. Điều khiến anh/chị khó quyết định nhất hiện nay:",
+    opts: [
+      "Không biết con hợp ngành gì",
+      "Sợ chọn sai trường/ngành, tốn thời gian tiền bạc",
+      "Con thiếu thông tin, thiếu trải nghiệm thực tế",
+      "Con chưa đủ kỷ luật để theo đường dài",
+      "Gia đình không thống nhất cách đồng hành"
+    ]},
+  { q: "18. Hiện con đang ở trạng thái định hướng:",
+    opts: [
+      "Có mục tiêu khá rõ, biết mình muốn gì",
+      "Có vài lựa chọn nhưng chưa chắc chắn",
+      "Mơ hồ, “hỏi thì bảo không biết”",
+      "Thờ ơ/né tránh nói về tương lai",
+      "Hoang mang, lo lắng, sợ quyết định"
+    ]},
+  { q: "19. Con có xu hướng tính cách nổi bật:",
+    opts: [
+      "Hướng ngoại, thích giao tiếp, hoạt động",
+      "Hướng nội, sâu sắc, cần không gian riêng",
+      "Nhạy cảm, dễ bị ảnh hưởng bởi lời nói",
+      "Mạnh mẽ/cứng đầu, thích tự quyết",
+      "Thận trọng, cầu toàn, sợ sai"
+    ]},
+  { q: "20. Khi gặp khó khăn học tập, con thường:",
+    opts: [
+      "Tự tìm cách giải quyết, thử nhiều cách",
+      "Hỏi người khác khi cần, biết nhờ hỗ trợ",
+      "Trì hoãn, né tránh, đợi “hết khó”",
+      "Bực bội, dễ bỏ cuộc",
+      "Căng thẳng, tự trách, lo âu"
+    ]},
+  { q: "21. Phong cách phụ huynh của anh/chị giống nhất:",
+    opts: [
+      "Đồng hành: tôn trọng và định hướng rõ",
+      "Kỳ vọng cao: thúc con cố gắng nhiều",
+      "Kiểm soát: tôi cần con làm đúng",
+      "Bao bọc: sợ con tổn thương nên làm thay",
+      "Bất nhất: lúc nghiêm, lúc mềm vì mệt mỏi"
+    ]},
+  { q: "22. Gia đình đang mắc kẹt nhất ở:",
+    opts: [
+      "Con thiếu động lực và mục tiêu",
+      "Con thiếu kỷ luật/thói quen học",
+      "Khó giao tiếp, dễ xung đột",
+      "Mơ hồ định hướng nghề nghiệp",
+      "Áp lực tâm lý của con hoặc của cha mẹ"
+    ]},
+  { q: "23. Nếu có một “lộ trình 4–8 tuần”, anh/chị muốn ưu tiên điều gì?",
+    opts: [
+      "Khôi phục động lực và thói quen học",
+      "Giảm căng thẳng, cải thiện cảm xúc",
+      "Xây lại giao tiếp và sự hợp tác trong nhà",
+      "Định hướng ngành/nghề phù hợp với con",
+      "Xây kỹ năng tự lập: kế hoạch – kỷ luật – tự tin"
+    ]},
+  { q: "24. Tổng thể, anh/chị đánh giá hành trình của con hiện tại:",
+    opts: [
+      "Ổn, chỉ cần tối ưu thêm",
+      "Tạm ổn nhưng cần định hướng rõ",
+      "Đang lệch nhịp, cần chỉnh kỷ luật/thói quen",
+      "Đang xuống, cần can thiệp sớm",
+      "Có dấu hiệu khủng hoảng/kiệt sức, cần hỗ trợ chuyên sâu"
+    ]},
 ];
 
-const answers = [
- "A. Ổn định và khá rõ ràng",
- "B. Tạm ổn nhưng thiếu định hướng",
- "C. Mơ hồ và bấp bênh",
- "D. Đang khủng hoảng thực sự"
-];
-
-/* ✅ Render thành 6 bước (mỗi bước 4 câu) */
+/** ✅ Render thành 6 bước (mỗi bước 4 câu) */
 const questionSteps = document.getElementById("questionSteps");
-let index = 0;
+const perStep = 4;
+const totalQ = QA.length;
+const totalStep = Math.ceil(totalQ / perStep);
 
-for (let step = 0; step < 6; step++) {
+for (let s = 0; s < totalStep; s++) {
+  const start = s * perStep;
+  const end = Math.min(start + perStep, totalQ);
+
   let html = `<div class="step">
-      <h5><i class="fa-solid fa-clipboard-question"></i> Phần ${step + 1}</h5>`;
+    <h5 class="mb-2"><i class="fa-solid fa-clipboard-question"></i> Phần ${s + 1} / ${totalStep}</h5>
+  `;
 
-  for (let j = 0; j < 4; j++) {
+  for (let i = start; i < end; i++) {
     html += `
       <div class="question-box">
-        <p>${questions[index]}</p>
-        <select class="form-control" name="q${index + 1}" required>
-          <option value="">-- Chọn --</option>
-          ${answers.map(a => `<option>${a}</option>`).join("")}
+        <p>${QA[i].q}</p>
+        <select class="form-control" name="q${i + 1}" required>
+          <option value="">-- Chọn câu trả lời --</option>
+          ${QA[i].opts.map(opt => `<option value="${opt}">${opt}</option>`).join("")}
         </select>
-      </div>`;
-    index++;
+      </div>
+    `;
   }
 
   html += `
@@ -293,7 +459,6 @@ for (let step = 0; step < 6; step++) {
       <button type="button" class="btn-pill" onclick="prevStep()">
         <i class="fa-solid fa-arrow-left"></i> Quay lại
       </button>
-
       <button type="button" class="btn-pill" onclick="nextStep()">
         Tiếp tục <i class="fa-solid fa-arrow-right"></i>
       </button>
@@ -303,18 +468,28 @@ for (let step = 0; step < 6; step++) {
   questionSteps.innerHTML += html;
 }
 
-/* ✅ Step Control */
+/** ✅ Step Control + Validate */
 let currentStep = 0;
 const steps = document.querySelectorAll(".step");
 
 function updateProgress() {
-  let progress = ((currentStep + 1) / steps.length) * 100;
+  const progress = ((currentStep + 1) / steps.length) * 100;
   document.getElementById("progressBar").style.width = progress + "%";
+}
+
+function validateStep() {
+  const fields = steps[currentStep].querySelectorAll("input, select, textarea");
+  for (const f of fields) {
+    if (f.hasAttribute("required") && !f.checkValidity()) {
+      Swal.fire("⚠️ Thiếu thông tin", "Vui lòng điền đầy đủ trước khi tiếp tục.", "warning");
+      return false;
+    }
+  }
+  return true;
 }
 
 function nextStep() {
   if (!validateStep()) return;
-
   steps[currentStep].classList.remove("active");
   currentStep++;
   steps[currentStep].classList.add("active");
@@ -328,29 +503,15 @@ function prevStep() {
   updateProgress();
 }
 
-/* ✅ Validate bắt buộc (Email + Phone) */
-function validateStep() {
-  let inputs = steps[currentStep].querySelectorAll("input, select");
-
-  for (let input of inputs) {
-    if (!input.checkValidity()) {
-      Swal.fire("⚠️ Thiếu thông tin", "Vui lòng điền đầy đủ trước khi tiếp tục.", "warning");
-      return false;
-    }
-  }
-  return true;
-}
-
-/* ✅ SUBMIT GOOGLE SHEET */
-document.getElementById("surveyForm").addEventListener("submit", function (e) {
+/** ✅ Submit Google Sheet */
+document.getElementById("surveyForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  // Validate email + phone bắt buộc
-  let email = this.parentEmail.value.trim();
-  let phone = this.parentPhone.value.trim();
-
-  if (email === "" || phone === "") {
-    Swal.fire("⚠️ Thiếu thông tin!", "Email và SĐT là bắt buộc để nhận báo cáo.", "warning");
+  // email + phone bắt buộc (nhấn mạnh)
+  const email = (this.parentEmail?.value || "").trim();
+  const phone = (this.parentPhone?.value || "").trim();
+  if (!email || !phone) {
+    Swal.fire("⚠️ Thiếu thông tin!", "Email và SĐT là bắt buộc để nhận báo cáo chuyên sâu.", "warning");
     return;
   }
 
@@ -361,9 +522,9 @@ document.getElementById("surveyForm").addEventListener("submit", function (e) {
     didOpen: () => Swal.showLoading()
   });
 
-  let formData = new FormData(this);
+  const formData = new FormData(this);
 
-  let payload = {
+  const payload = {
     testType: "BÀI ĐÁNH GIÁ CHUYÊN SÂU",
     childName: formData.get("childName"),
     childGender: formData.get("childGender"),
@@ -372,37 +533,30 @@ document.getElementById("surveyForm").addEventListener("submit", function (e) {
     parentEmail: formData.get("parentEmail"),
     parentPhone: formData.get("parentPhone"),
     answers: [],
-    extra: formData.get("extra")
+    extra: formData.get("extra") || ""
   };
 
-  for (let i = 1; i <= 24; i++) {
-    payload.answers.push(formData.get("q" + i));
-  }
+  for (let i = 1; i <= 24; i++) payload.answers.push(formData.get("q"+i));
 
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(payload)
-  })
-    .then(res => res.json())
+  fetch(scriptURL, { method: "POST", body: JSON.stringify(payload) })
+    .then(r => r.json())
     .then(() => {
       Swal.fire({
         icon: "success",
         title: "✅ Hoàn thành!",
         text: "Cảm ơn anh/chị. Báo cáo chuyên sâu sẽ được gửi sớm nhất."
       });
-
+      // reset về step 0
       document.getElementById("surveyForm").reset();
+      steps[currentStep].classList.remove("active");
       currentStep = 0;
-
-      steps.forEach(s => s.classList.remove("active"));
-      steps[0].classList.add("active");
+      steps[currentStep].classList.add("active");
       updateProgress();
     })
-    .catch(err => {
-      Swal.fire("❌ Lỗi gửi dữ liệu!", err.toString(), "error");
-    });
+    .catch(err => Swal.fire("❌ Lỗi gửi dữ liệu!", String(err), "error"));
 });
 </script>
+
 
 
 </body>
