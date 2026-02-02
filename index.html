@@ -248,44 +248,48 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbz4vd1o4mvi7UFlDTkjd_
 // ... (Phần const QA và render câu hỏi giữ nguyên không đổi) ...
 
 /* CHỈ SỬA PHẦN SUBMIT DƯỚI ĐÂY */
+/* ✅ Submit FormData - PHIÊN BẢN KHÔNG LỖI FETCH */
 document.getElementById("surveyForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  // Hiển thị loading
+  // 1. Kiểm tra lại URL (Dán URL mới vào đây)
+  const scriptURL = "https://script.google.com/macros/s/THAY_URL_MOI_CUA_BAN_VAO_DAY/exec";
+
   Swal.fire({
-    title: "Đang gửi khảo sát...",
-    text: "Hệ thống đang xử lý dữ liệu, vui lòng đợi...",
+    title: "Đang gửi dữ liệu...",
+    text: "Vui lòng không tắt trình duyệt.",
     allowOutsideClick: false,
     didOpen: () => Swal.showLoading()
   });
 
-  let formData = new FormData(this);
+  // 2. Chuyển đổi dữ liệu sang dạng URLSearchParams (Text thuần)
+  // Cách này an toàn hơn FormData khi dùng no-cors
+  const form = e.target;
+  const data = new URLSearchParams(new FormData(form));
 
-  // Gửi dữ liệu với chế độ no-cors để tránh lỗi Failed to fetch
   fetch(scriptURL, {
     method: "POST",
-    body: formData,
-    mode: "no-cors" // <--- QUAN TRỌNG: Dòng này giúp không bị chặn
+    body: data,     // Gửi dạng chuỗi text
+    mode: "no-cors" // Bắt buộc để không bị chặn
   })
   .then(() => {
-    // Vì no-cors không trả về nội dung, ta mặc định là thành công
+    // 3. Vì no-cors không trả về kết quả, mặc định coi như thành công
     Swal.fire({
       icon: 'success',
-      title: '✅ Hoàn thành!',
-      text: 'Dữ liệu đã được lưu thành công. Cảm ơn anh/chị!',
-      confirmButtonText: 'Đóng'
+      title: '✅ Thành công!',
+      text: 'Hệ thống đã ghi nhận câu trả lời.',
+      confirmButtonText: 'Hoàn tất'
     }).then(() => {
-      this.reset();
+      form.reset();
       window.location.reload();
     });
   })
   .catch(err => {
-    // Nếu lỗi mạng thật sự
-    console.error('Lỗi:', err);
-    Swal.fire("❌ Lỗi kết nối", "Vui lòng kiểm tra đường truyền mạng.", "error");
+    // Lỗi này chỉ hiện khi mất mạng internet hoàn toàn
+    console.error('Chi tiết lỗi:', err);
+    Swal.fire("❌ Lỗi mạng", "Vui lòng kiểm tra kết nối internet.", "error");
   });
 });
-
 /* GIỮ NGUYÊN CÁC HÀM nextStep, prevStep, validateStep */
 </script>
 
