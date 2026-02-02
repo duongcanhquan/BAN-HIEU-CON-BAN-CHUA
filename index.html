@@ -5,19 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bài Đánh Giá Chuyên Sâu Hành Trình Học Tập Của Con</title>
 
-  <!-- ✅ Font Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- ✅ Bootstrap 5.3 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- ✅ FontAwesome 6 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <!-- ✅ Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-  <!-- ✅ SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
@@ -26,21 +17,15 @@
       min-height: 100vh;
       margin: 0;
       padding: 25px;
-      background: linear-gradient(-45deg,
-        #ee7752,
-        #e73c7e,
-        #23a6d5,
-        #23d5ab);
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
       background-size: 400% 400%;
       animation: gradientBG 12s ease infinite;
     }
-
     @keyframes gradientBG {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
       100% {background-position: 0% 50%;}
     }
-
     .glass-card {
       max-width: 950px;
       margin: auto;
@@ -50,102 +35,22 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       backdrop-filter: blur(10px);
     }
-
-    h1 {
-      font-weight: 800;
-      text-align: center;
-      font-size: 28px;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 15px;
-      color: #444;
-      margin-bottom: 20px;
-    }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .logo img {
-      width: 160px;
-    }
-
-    .note-box {
-      background: #f4f8ff;
-      border-left: 6px solid #667eea;
-      padding: 14px;
-      border-radius: 14px;
-      font-size: 14px;
-      margin: 15px 0;
-      color: #222;
-    }
-
-    label {
-      font-weight: 800;
-      margin-top: 12px;
-    }
-
-    input, select, textarea {
-      border-radius: 15px !important;
-      padding: 12px !important;
-      font-size: 15px;
-    }
-
-    .question-box {
-      margin-top: 18px;
-      padding: 16px;
-      border-radius: 15px;
-      background: #f9fbff;
-      border-left: 6px solid #764ba2;
-    }
-
-    .question-box p {
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .step {
-      display: none;
-    }
-
-    .step.active {
-      display: block;
-      animation: fadeInUp 0.6s;
-    }
-
-    .btn-pill {
-      border-radius: 50px;
-      padding: 14px;
-      width: 100%;
-      font-weight: 800;
-      font-size: 16px;
-      border: none;
-      background: linear-gradient(to right, #667eea, #764ba2);
-      color: white;
-    }
-
-    .btn-pill:hover {
-      opacity: 0.92;
-    }
-
-    .progress {
-      height: 12px;
-      border-radius: 20px;
-      margin-bottom: 18px;
-    }
-
-    .progress-bar {
-      background: linear-gradient(to right, #667eea, #764ba2);
-    }
-
-    @media(max-width:768px) {
-      .glass-card {
-        padding: 25px;
-      }
-    }
+    h1 { font-weight: 800; text-align: center; font-size: 28px; }
+    .subtitle { text-align: center; font-size: 15px; color: #444; margin-bottom: 20px; }
+    .logo { text-align: center; margin-bottom: 12px; }
+    .logo img { width: 160px; }
+    .note-box { background: #f4f8ff; border-left: 6px solid #667eea; padding: 14px; border-radius: 14px; font-size: 14px; margin: 15px 0; color: #222; }
+    label { font-weight: 800; margin-top: 12px; }
+    input, select, textarea { border-radius: 15px !important; padding: 12px !important; font-size: 15px; }
+    .question-box { margin-top: 18px; padding: 16px; border-radius: 15px; background: #f9fbff; border-left: 6px solid #764ba2; }
+    .question-box p { font-weight: 800; margin-bottom: 10px; }
+    .step { display: none; }
+    .step.active { display: block; animation: fadeInUp 0.6s; }
+    .btn-pill { border-radius: 50px; padding: 14px; width: 100%; font-weight: 800; font-size: 16px; border: none; background: linear-gradient(to right, #667eea, #764ba2); color: white; }
+    .btn-pill:hover { opacity: 0.92; }
+    .progress { height: 12px; border-radius: 20px; margin-bottom: 18px; }
+    .progress-bar { background: linear-gradient(to right, #667eea, #764ba2); }
+    @media(max-width:768px) { .glass-card { padding: 25px; } }
   </style>
 </head>
 
@@ -153,38 +58,24 @@
 
 <div class="glass-card animate__animated animate__fadeIn">
 
-  <!-- ✅ LOGO -->
   <div class="logo">
     <img src="https://raw.githubusercontent.com/duongcanhquan/image/main/Logo%20Cao%20%C4%91a%CC%86%CC%89ng%20Vie%CC%A3%CC%82t%20My%CC%83%20-%20ba%CC%89n%20chua%CC%82%CC%89n%202025-01.png">
   </div>
 
   <h1>📌 BÀI ĐÁNH GIÁ CHUYÊN SÂU</h1>
+  <p class="subtitle">Đây không chỉ là khảo sát.<br>Đây là bước đầu để cha mẹ hiểu rõ con đang cần gì nhất.</p>
 
-  <p class="subtitle">
-    Đây không chỉ là khảo sát.<br>
-    Đây là bước đầu để cha mẹ hiểu rõ con đang cần gì nhất.
-  </p>
+  <div class="note-box"><i class="fa-solid fa-heart-circle-check"></i> Chỉ mất 5 phút — nhưng câu trả lời có thể giúp con tránh lạc đường nhiều năm.</div>
 
-  <div class="note-box">
-    <i class="fa-solid fa-heart-circle-check"></i>
-    Chỉ mất 5 phút — nhưng câu trả lời có thể giúp con tránh lạc đường nhiều năm.
-  </div>
-
-  <!-- ✅ Progress -->
   <div class="progress">
     <div class="progress-bar" id="progressBar" style="width:12%"></div>
   </div>
 
   <form id="surveyForm">
 
-    <!-- ✅ STEP 1 -->
     <div class="step active">
       <h5><i class="fa-solid fa-user"></i> Thông tin để gửi báo cáo</h5>
-
-      <div class="note-box">
-        📩 Báo cáo sẽ được gửi qua Email và SĐT.  
-        Đây là bước cần thiết để anh/chị nhận kết quả chính xác.
-      </div>
+      <div class="note-box">📩 Báo cáo sẽ được gửi qua Email và SĐT. Đây là bước cần thiết để anh/chị nhận kết quả chính xác.</div>
 
       <label>Tên con</label>
       <input class="form-control" name="childName" required>
@@ -208,32 +99,20 @@
       <label>SĐT nhận báo cáo (Bắt buộc)</label>
       <input class="form-control" name="parentPhone" required>
 
-      <button type="button" class="btn-pill mt-3" onclick="nextStep()">
-        Tiếp tục <i class="fa-solid fa-arrow-right"></i>
-      </button>
+      <button type="button" class="btn-pill mt-3" onclick="nextStep()">Tiếp tục <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- ✅ QUESTIONS -->
     <div id="questionSteps"></div>
 
-    <!-- ✅ STEP CUỐI -->
     <div class="step">
       <h5><i class="fa-solid fa-comment-dots"></i> Câu 25 – Điều cha mẹ trăn trở nhất</h5>
-
-      <div class="note-box">
-        ✍️ Một dòng chia sẻ sẽ giúp báo cáo “đúng gia đình mình” hơn rất nhiều.
-      </div>
+      <div class="note-box">✍️ Một dòng chia sẻ sẽ giúp báo cáo “đúng gia đình mình” hơn rất nhiều.</div>
 
       <textarea class="form-control" name="extra" rows="4"></textarea>
 
       <div class="d-flex gap-2 mt-3">
-        <button type="button" class="btn-pill" onclick="prevStep()">
-          <i class="fa-solid fa-arrow-left"></i> Quay lại
-        </button>
-
-        <button type="submit" class="btn-pill">
-          GỬI KHẢO SÁT <i class="fa-solid fa-paper-plane"></i>
-        </button>
+        <button type="button" class="btn-pill" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
+        <button type="submit" class="btn-pill">GỬI KHẢO SÁT <i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
 
@@ -241,56 +120,124 @@
 </div>
 
 <script>
-// ⚠️ Dán URL Web App mới của bạn vào đây
-const scriptURL = "https://script.google.com/macros/s/AKfycbz4vd1o4mvi7UFlDTkjd_VkeN0RmaVeCZmVL1yZwd8bktAd_1qk4a5WLjBxdSgwvu7e/exec";
+// ============================================================
+// 👇 DÁN URL GOOGLE APPS SCRIPT CỦA BẠN VÀO GIỮA DẤU NGOẶC KÉP DƯỚI ĐÂY 👇
+// Ví dụ: const scriptURL = "https://script.google.com/.../exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzG1DylqS9iwXStZJ9KO-6zk418jcFsw05Ly9uF-BJU8HNvfb7bZJLr6DyfJv6SQQkP/exec";
+// ============================================================
 
-/* GIỮ NGUYÊN CODE TẠO CÂU HỎI VÀ GIAO DIỆN CỦA BẠN */
-// ... (Phần const QA và render câu hỏi giữ nguyên không đổi) ...
+/* DANH SÁCH 24 CÂU HỎI */
+const QA = [
+  {q:"1. Khi nhìn vào việc học hiện tại của con, anh/chị cảm thấy:",opts:["Con khá ổn, tự giác phần lớn thời gian","Con học được nhưng thiếu mục tiêu rõ ràng","Con đang chững lại, dễ trì hoãn","Con mất động lực, học đối phó","Con có dấu hiệu áp lực hoặc lo âu"]},
+  {q:"2. Điều khiến anh/chị trăn trở nhất là:",opts:["Con thiếu mục tiêu dài hạn","Con chưa có phương pháp học tốt","Con dễ mất tập trung, hay trì hoãn","Con tự ti, sợ bị so sánh","Cha mẹ không biết hỗ trợ đúng cách"]},
+  {q:"3. Khi bắt đầu học, con thường:",opts:["Tự giác vào bàn học","Cần nhắc nhẹ mới làm","Kéo dài thời gian rồi mới bắt đầu","Né tránh hoặc than mệt","Nhanh nản và bỏ giữa chừng"]},
+  {q:"4. Kết quả học tập gần đây của con:",opts:["Ổn định và tiến bộ","Tạm ổn nhưng lên xuống","Giảm nhẹ kéo dài","Giảm rõ rệt khiến gia đình lo","Điểm không phản ánh đúng vì con căng thẳng"]},
+  {q:"5. Khi nhắc đến chuyện học, con thường:",opts:["Lắng nghe và trao đổi được","Nghe nhưng ít nói, né chia sẻ","Im lặng hoặc tránh đi","Cáu gắt, phản ứng mạnh","Khóc, đóng cửa hoặc thu mình"]},
+  {q:"6. Mối quan hệ cha mẹ–con hiện tại:",opts:["Gần gũi, con chia sẻ nhiều","Bình thường nhưng chưa sâu","Có khoảng cách rõ rệt","Căng thẳng khi nói chuyện học","Con thu mình và né tránh cha mẹ"]},
+  {q:"7. Con có dấu hiệu áp lực khi ở gần cha mẹ không?",opts:["Không, con khá thoải mái","Thỉnh thoảng có","Có, con dễ nhạy cảm","Rõ rệt: né tránh, cáu gắt","Con có dấu hiệu lo âu kéo dài"]},
+  {q:"8. Khi nói chuyện học, điều thường xảy ra:",opts:["Hai bên thống nhất được","Cha mẹ nói nhiều, con ít phản hồi","Nói một lúc thì bế tắc","Kết thúc bằng căng thẳng","Phải bùng nổ con mới làm"]},
+  {q:"9. Điều anh/chị lo nhất không phải điểm số mà là:",opts:["Con mất tự tin","Con thiếu tự lập","Con không thấy ý nghĩa học","Con bị ảnh hưởng mạng xã hội","Con căng thẳng hoặc kiệt sức"]},
+  {q:"10. Anh/chị có từng tự hỏi mình đang đồng hành đúng chưa?",opts:["Hiếm khi","Thỉnh thoảng","Nhiều lần","Rất thường xuyên","Tôi thực sự cần người hướng dẫn"]},
+  {q:"11. Điều khiến anh/chị sợ nhất cho tương lai con:",opts:["Con chọn sai hướng","Con thiếu động lực","Con dễ gục ngã","Con không có nghề","Con tổn thương tâm lý kéo dài"]},
+  {q:"12. Cảm xúc của anh/chị bị ảnh hưởng bởi chuyện học:",opts:["Ít","Có nhưng kiểm soát được","Khá nhiều","Rất nhiều","Tôi kiệt sức và bất lực"]},
+  {q:"13. Điều anh/chị mong nhất cho con:",opts:["Hạnh phúc và tự tin","Kỷ luật và tự lập","Phát huy đúng điểm mạnh","Định hướng rõ ràng","Vừa hạnh phúc vừa có nghề vững"]},
+  {q:"14. Anh/chị muốn con trưởng thành thành người:",opts:["Tử tế và trách nhiệm","Bản lĩnh và tự quyết","Giỏi chuyên môn","Biết quản trị cảm xúc","Có mục tiêu và kỷ luật"]},
+  {q:"15. Thành công theo anh/chị là:",opts:["Con sống đúng giá trị","Con có nghề ổn định","Con tự lập","Con được công nhận","Con cân bằng sức khỏe và sự nghiệp"]},
+  {q:"16. Gia đình có kế hoạch học tập rõ ràng chưa?",opts:["Rồi, khá rõ","Có nhưng chưa cụ thể","Chưa rõ, hay thay đổi","Mơ hồ, đang loay hoay","Cha mẹ và con mâu thuẫn định hướng"]},
+  {q:"17. Điều khiến anh/chị khó quyết định nhất:",opts:["Không biết con hợp ngành gì","Sợ chọn sai trường/ngành","Con thiếu trải nghiệm thực tế","Con thiếu kỷ luật","Gia đình chưa thống nhất"]},
+  {q:"18. Con đang ở trạng thái định hướng:",opts:["Khá rõ mục tiêu","Có vài lựa chọn","Mơ hồ, không biết","Né tránh nói về tương lai","Hoang mang và lo lắng"]},
+  {q:"19. Tính cách nổi bật của con:",opts:["Hướng ngoại, năng động","Hướng nội, sâu sắc","Nhạy cảm","Cứng đầu, thích tự quyết","Cầu toàn, sợ sai"]},
+  {q:"20. Khi gặp khó khăn, con thường:",opts:["Tự tìm cách giải quyết","Hỏi người khác khi cần","Trì hoãn và né tránh","Bực bội, bỏ cuộc","Căng thẳng, tự trách"]},
+  {q:"21. Phong cách phụ huynh của anh/chị:",opts:["Đồng hành, tôn trọng","Kỳ vọng cao","Kiểm soát nhiều","Bao bọc quá mức","Lúc nghiêm lúc mềm"]},
+  {q:"22. Gia đình đang mắc kẹt nhất ở:",opts:["Con thiếu động lực","Con thiếu thói quen học","Khó giao tiếp","Mơ hồ hướng nghiệp","Áp lực tâm lý nặng"]},
+  {q:"23. Nếu có lộ trình 4–8 tuần, anh/chị muốn ưu tiên:",opts:["Khôi phục động lực","Giảm căng thẳng","Cải thiện giao tiếp","Định hướng nghề phù hợp","Rèn tự lập và kỷ luật"]},
+  {q:"24. Tổng thể, hành trình của con hiện tại:",opts:["Ổn, chỉ cần tối ưu","Tạm ổn nhưng thiếu định hướng","Lệch nhịp, cần điều chỉnh","Xuống rõ, cần can thiệp sớm","Khủng hoảng, cần hỗ trợ chuyên sâu"]}
+];
 
-/* CHỈ SỬA PHẦN SUBMIT DƯỚI ĐÂY */
-/* ✅ Submit FormData - PHIÊN BẢN KHÔNG LỖI FETCH */
-document.getElementById("surveyForm").addEventListener("submit", function(e) {
+/* Render Câu hỏi */
+const questionSteps=document.getElementById("questionSteps");
+const perStep=4;
+const totalStep=Math.ceil(QA.length/perStep);
+
+for(let s=0;s<totalStep;s++){
+  let start=s*perStep;
+  let end=Math.min(start+perStep,QA.length);
+  let html=`<div class="step">
+    <h5><i class="fa-solid fa-clipboard-question"></i> Phần ${s+1}/${totalStep}</h5>
+    <div class="note-box">✅ Những câu này giúp phân tích đúng “điểm nghẽn” của con, không chỉ là điểm số.</div>`;
+  for(let i=start;i<end;i++){
+    html+=`<div class="question-box"><p>${QA[i].q}</p>
+      <select class="form-control" name="q${i+1}" required>
+        <option value="">-- Chọn câu trả lời --</option>
+        ${QA[i].opts.map(o=>`<option>${o}</option>`).join("")}
+      </select></div>`;
+  }
+  html+=`<div class="d-flex gap-2 mt-3">
+      <button type="button" class="btn-pill" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
+      <button type="button" class="btn-pill" onclick="nextStep()">Tiếp tục <i class="fa-solid fa-arrow-right"></i></button>
+    </div></div>`;
+  questionSteps.innerHTML+=html;
+}
+
+/* Step Control */
+let currentStep=0;
+const steps=document.querySelectorAll(".step");
+function updateProgress(){document.getElementById("progressBar").style.width=((currentStep+1)/steps.length)*100+"%";}
+function validateStep(){
+  let fields=steps[currentStep].querySelectorAll("input,select");
+  for(let f of fields){
+    if(f.required && !f.checkValidity()){
+      Swal.fire("⚠️ Thiếu thông tin","Vui lòng điền đầy đủ để tiếp tục.","warning");
+      return false;
+    }
+  } return true;
+}
+function nextStep(){ if(!validateStep())return; steps[currentStep].classList.remove("active"); currentStep++; steps[currentStep].classList.add("active"); updateProgress(); }
+function prevStep(){ steps[currentStep].classList.remove("active"); currentStep--; steps[currentStep].classList.add("active"); updateProgress(); }
+
+/* ✅ LOGIC GỬI FORM ĐÃ SỬA LỖI */
+document.getElementById("surveyForm").addEventListener("submit",function(e){
   e.preventDefault();
 
-  // 1. Kiểm tra lại URL (Dán URL mới vào đây)
-  const scriptURL = "https://script.google.com/macros/s/THAY_URL_MOI_CUA_BAN_VAO_DAY/exec";
-
+  // Kiểm tra nếu người dùng chưa điền URL
+  if (scriptURL.includes("DÁN_URL")) {
+    Swal.fire("⚠️ Chưa cấu hình","Vui lòng dán Link App Script vào file index.html dòng 192","error");
+    return;
+  }
+  
   Swal.fire({
-    title: "Đang gửi dữ liệu...",
-    text: "Vui lòng không tắt trình duyệt.",
-    allowOutsideClick: false,
-    didOpen: () => Swal.showLoading()
+    title:"Đang gửi khảo sát...",
+    text: "Vui lòng đợi trong giây lát",
+    allowOutsideClick:false,
+    didOpen:()=>Swal.showLoading()
   });
 
-  // 2. Chuyển đổi dữ liệu sang dạng URLSearchParams (Text thuần)
-  // Cách này an toàn hơn FormData khi dùng no-cors
   const form = e.target;
+  // CHUYỂN DATA SANG DẠNG URLSearchParams ĐỂ NÉ LỖI CORS
   const data = new URLSearchParams(new FormData(form));
 
   fetch(scriptURL, {
     method: "POST",
-    body: data,     // Gửi dạng chuỗi text
-    mode: "no-cors" // Bắt buộc để không bị chặn
+    body: data,
+    mode: "no-cors" // <--- QUAN TRỌNG NHẤT
   })
-  .then(() => {
-    // 3. Vì no-cors không trả về kết quả, mặc định coi như thành công
+  .then(()=>{
+    // Vì no-cors không trả về kết quả, ta mặc định là thành công
     Swal.fire({
       icon: 'success',
-      title: '✅ Thành công!',
-      text: 'Hệ thống đã ghi nhận câu trả lời.',
-      confirmButtonText: 'Hoàn tất'
+      title: '✅ Hoàn thành!',
+      text: 'Dữ liệu đã được lưu vào hệ thống.',
+      confirmButtonText: 'Đóng'
     }).then(() => {
       form.reset();
       window.location.reload();
     });
   })
-  .catch(err => {
-    // Lỗi này chỉ hiện khi mất mạng internet hoàn toàn
-    console.error('Chi tiết lỗi:', err);
-    Swal.fire("❌ Lỗi mạng", "Vui lòng kiểm tra kết nối internet.", "error");
+  .catch(err=>{
+    Swal.fire("❌ Có lỗi xảy ra!", "Vui lòng kiểm tra kết nối mạng và thử lại.", "error");
+    console.error('Error:', err);
   });
 });
-/* GIỮ NGUYÊN CÁC HÀM nextStep, prevStep, validateStep */
 </script>
 
 </body>
