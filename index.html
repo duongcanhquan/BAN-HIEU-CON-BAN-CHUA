@@ -62,8 +62,8 @@
     <img src="https://raw.githubusercontent.com/duongcanhquan/image/main/Logo%20Cao%20%C4%91a%CC%86%CC%89ng%20Vie%CC%A3%CC%82t%20My%CC%83%20-%20ba%CC%89n%20chua%CC%82%CC%89n%202025-01.png">
   </div>
 
-  <h1>📌 BÀI ĐÁNH GIÁ CHUYÊN SÂU v1</h1>
-  <p class="subtitle">Đây không chỉ là khảo sát.<br>Đây là bước đầu để cha mẹ hiểu rõ con đang cần gì nhất.</p>
+  <h1>📌 CHÚNG TA CÓ THỰC SỰ HIỂU CON MÌNH </h1>
+  <p class="subtitle"> Thông tin thu thập dựa theo các phương pháp chuyên môn cùng đội ngũ chuyên gia học đường.<br>Đây là bước đầu để cha mẹ hiểu rõ con đang cần gì nhất.</p>
 
   <div class="note-box"><i class="fa-solid fa-heart-circle-check"></i> Chỉ mất 5 phút — nhưng câu trả lời có thể giúp con tránh lạc đường nhiều năm.</div>
 
@@ -75,7 +75,7 @@
 
     <div class="step active">
       <h5><i class="fa-solid fa-user"></i> Thông tin để gửi báo cáo</h5>
-      <div class="note-box">📩 Báo cáo sẽ được gửi qua Email và SĐT. Đây là bước cần thiết để anh/chị nhận kết quả chính xác.</div>
+      <div class="note-box">📩 Báo cáo chi tiết sẽ được gửi qua Email và SĐT. Đây là bước cần thiết để anh/chị nhận kết quả chính xác.</div>
 
       <label>Tên con</label>
       <input class="form-control" name="childName" required>
@@ -164,7 +164,7 @@ for(let s=0;s<totalStep;s++){
   let end=Math.min(start+perStep,QA.length);
   let html=`<div class="step">
     <h5><i class="fa-solid fa-clipboard-question"></i> Phần ${s+1}/${totalStep}</h5>
-    <div class="note-box">✅ Những câu này giúp phân tích đúng “điểm nghẽn” của con, không chỉ là điểm số.</div>`;
+    <div class="note-box">✅ Những câu này giúp phân tích đúng “điểm nghẽn” của cha mẹ & con. Hãy trả lời đúng như những gì cha me cảm nhận thấy để có kết quả chính xác.</div>`;
   for(let i=start;i<end;i++){
     html+=`<div class="question-box"><p>${QA[i].q}</p>
       <select class="form-control" name="q${i+1}" required>
